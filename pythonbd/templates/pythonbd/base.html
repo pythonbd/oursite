@@ -4,19 +4,109 @@
     <meta charset="UTF-8">
     <title>{% block title %} Title {% endblock %} </title>
     {% load staticfiles %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'pythonbd/bootstrap/main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'pythonbd/bootstrap/css/bootstrap.min.css' %}" />
+    <script src="{% static 'pythonbd/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'pythonbd/bootstrap/js/jquery-3.2.1.min.js' %}"></script>
 </head>
 <body>
-    <div>
-         <ul>
-             <li><a href="/pythonbd/">Home</a></li>
-             <li><a href="/pythonbd/about">about</a></li>
-             <li><a href="/pythonbd/service">service</a></li>
+
+    <section class="header-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="left-content">
+                        <h4>Header Left Content</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="right-content">
+                        <h4> User : {{request.user}} </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="main-menu">
+        <ul>
+            {% for menu in menu_list %}
+             <li><a href="/pythonbd/{{menu.menu_url}}">{{ menu.menu_name }}</a></li>
+            {% endfor %}
         </ul>
+    </nav>
+    <section id="slider">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slider">
+                    <img src="{% static 'pythonbd/images/index.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="main-section">
+    {% block body %}
+    {% endblock %}
     </div>
 
-    <div>
-         {% block body %}
-         {% endblock %}
-    </div>
+    <section class="footer-area">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="single-content">
+                            <h2>Single Heading</h2>
+                            <p>
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                                make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                sheets containing Lorem Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-content">
+                            <h2>Single Heading</h2>
+                            <p>
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                                make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                sheets containing Lorem Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="single-content">
+                            <h2>Single Heading</h2>
+                            <p>
+                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                                make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                sheets containing Lorem Ipsum
+                                passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            <p>&copy; All Righ Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
